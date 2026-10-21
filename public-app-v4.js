@@ -29,11 +29,12 @@ function contactsView(){document.body.classList.remove('p4-public');root.hidden=
 $('p4-login').onclick=()=>{root.hidden=true;$('gate').hidden=false;let back=$('p4-back');if(!back){back=document.createElement('button');back.type='button';back.id='p4-back';back.className='p4-outline';back.textContent='← Назад к сообщениям';back.onclick=()=>{$('vault-password').value='';$('vault-confirm').value='';publicView();};$('gate').querySelector('.gate-card')?.prepend(back);}$('vault-password').focus();};
 document.addEventListener('ausfig:unlocked',contactsView);document.addEventListener('ausfig:locked',publicView);
 const contacts=$('page-contacts'),box=document.createElement('section');box.className='p4-contact-box';
-box.innerHTML='<h2>Сообщения контактам</h2><p>Шифрование и расшифровка по подтверждённому сеансу.</p><div class="p4-contact-tabs"><button type="button" class="selected" id="p4-contact-enc">Зашифровать</button><button type="button" id="p4-contact-dec">Расшифровать</button></div><div id="p4-contact-content"></div>';
+box.innerHTML='<h2>Шифрование с доверенными контактами</h2><p>Доступно только после входа в профиль и обмена ключами.</p><div class="p4-contact-tabs"><button type="button" class="selected" id="p4-contact-enc">Зашифровать контакту</button><button type="button" id="p4-contact-dec">Расшифровать от контакта</button></div><div id="p4-contact-content"></div>';
 contacts.append(box);
 for(const section of [$('page-encrypt'),$('page-decrypt')]){section.classList.remove('page');section.classList.add('p4-contact-operation');$('p4-contact-content').append(section);}
 function contactMode(next){$('page-encrypt').hidden=next!=='encrypt';$('page-decrypt').hidden=next!=='decrypt';$('p4-contact-enc').classList.toggle('selected',next==='encrypt');$('p4-contact-dec').classList.toggle('selected',next==='decrypt');}
 $('p4-contact-enc').onclick=()=>contactMode('encrypt');$('p4-contact-dec').onclick=()=>contactMode('decrypt');contactMode('encrypt');
+document.addEventListener('ausfig-contact-pane',event=>contactMode(event.detail));
 const navs=[...document.querySelectorAll('.sidebar nav [data-page]')];for(const page of ['encrypt','decrypt','help']){const n=navs.find(b=>b.dataset.page===page);if(n)n.hidden=true;}
 const navSecurity=navs.find(b=>b.dataset.page==='security');if(navSecurity){navSecurity.setAttribute('aria-label','Настройки');const label=[...navSecurity.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);if(label)label.textContent='Настройки';}
 const settingsPage=$('page-security');settingsPage.querySelector('.page-heading h1').textContent='Настройки';
