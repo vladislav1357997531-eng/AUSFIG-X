@@ -1,7 +1,7 @@
 // AUSFIG X v0.2. Network-first prevents installed PWAs from being stuck on old files.
 const PREFIX='ausfig-x:'+self.registration.scope+':';
-const CACHE=PREFIX+'v3-2026-10-21-password';
-const FILES=['./','./index.html','./app.js','./styles.css','./upgrade.css','./upgrade.js','./quick-crypto.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
+const CACHE=PREFIX+'v4-2026-10-21-navigation';
+const FILES=['./','./index.html','./app.js','./styles.css','./upgrade.css','./upgrade.js','./quick-crypto.js','./navigation-v3.js','./navigation-v3.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
 const PATHS=new Set(FILES.map(f=>new URL(f,self.registration.scope).pathname));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(names=>Promise.all(names.filter(name=>name.startsWith(PREFIX)&&name!==CACHE).map(name=>caches.delete(name)))).then(()=>self.clients.claim())));
