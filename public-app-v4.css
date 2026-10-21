@@ -9,3 +9,10 @@
 /* Strict separation: standalone quick messages are never part of the unlocked contact workspace. */
 body:not(.p4-public) #public-app{display:none!important}
 #shell .sidebar [data-page="encrypt"],#shell .sidebar [data-page="decrypt"]{display:none!important}
+
+/* Fast initial paint before the small public module runs. */
+.p4-public #gate[hidden]{display:none!important}
+.p4-startup{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;background:#0e1514;color:#e6efea;text-align:center;font-family:system-ui,-apple-system,sans-serif}
+.p4-startup strong{font-size:24px;letter-spacing:.06em;font-weight:800}
+.p4-startup span{font-size:13px;color:#9cb5a9}
+.p4-public #public-app[hidden]{display:none!important}
