@@ -1,6 +1,6 @@
 // AUSFIG X PWA v4. Network-first updates, cached offline resources.
 const PREFIX='ausfig-x:'+self.registration.scope+':';
-const CACHE=PREFIX+'v7-public-messages-telegram-final';
+const CACHE=PREFIX+'v8-contact-only-account-20261021';
 const FILES=['./','./index.html','./app.js','./styles.css','./public-app-v4.js','./public-app-v4.css','./quick-crypto.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
 const PATHS=new Set(FILES.map(f=>new URL(f,self.registration.scope).pathname));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
