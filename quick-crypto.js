@@ -16,7 +16,7 @@ export async function encryptQuick(text,pass){
 }
 export function normalizeQuickCode(input){
  if(typeof input!=='string')throw Error('Вставьте код Q1:.');
- let value=input.normalize('NFKC').replace(/[\u200B-\u200D\u2060\uFEFF\u00AD]/g,'');
+ let value=input.normalize('NFKC').replace(/[\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF\u00AD]/g,'');
  const start=value.search(/Q1\s*:/i);
  if(start<0)throw Error('Не найден код Q1:. Вставьте зашифрованный текст.');
  value=value.slice(start).replace(/^Q1\s*:/i,'');
