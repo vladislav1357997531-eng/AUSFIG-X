@@ -44,7 +44,7 @@ const dock=document.createElement('nav');dock.className='p4-dock';dock.setAttrib
 for(const b of dock.querySelectorAll('button'))b.onclick=()=>{navs.find(x=>x.dataset.page===b.dataset.v4Nav)?.click();updateNav();};
 function updateNav(){const hash=location.hash.slice(1);for(const b of dock.querySelectorAll('button'))b.classList.toggle('selected',b.dataset.v4Nav===hash);}
 window.addEventListener('hashchange',updateNav);navs.forEach(b=>b.addEventListener('click',updateNav));updateNav();
-function normalizeTrusted(value){if(typeof value!=='string')return value;const start=value.search(/(?:M1|T1|AXP1)\s*:/i);if(start<0)return value;return value.slice(start).replace(/[\s\u200B-\u200D\u2060\uFEFF\u00AD`]/g,'');}
+function normalizeTrusted(value){if(typeof value!=='string')return value;const start=value.search(/(?:M1|T1|AXP1)\s*:/i);if(start<0)return value;return value.slice(start).replace(/[\s\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF\u00AD`]/g,'');}
 $('decrypt-form')?.addEventListener('submit',()=>{$('cipher-input').value=normalizeTrusted($('cipher-input').value);},true);
 for(const [button,input] of [['answer-offer','offer-input'],['finish-offer','answer-input']])$(button)?.addEventListener('click',()=>{$(input).value=normalizeTrusted($(input).value);},true);
 publicView();
