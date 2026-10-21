@@ -1,0 +1,35 @@
+/* AUSFIG X mobile and no-contact UI */
+.quick-entry{margin-top:12px;min-height:48px}
+.quick-banner{display:flex;gap:14px;justify-content:space-between;align-items:center;background:linear-gradient(120deg,#22382d,#152720);padding:14px 20px;border:1px solid #38644f;border-radius:11px;margin:14px 0 16px}
+.quick-banner strong,.quick-banner span{display:block}.quick-banner strong{font-size:13px;color:#c3ffdc}.quick-banner span{font-size:12px;color:#a5c4b4;margin-top:4px}.quick-banner .quick-entry{width:auto;margin:0;flex-shrink:0}
+.quick-dialog{max-height:min(850px,calc(100dvh - 24px));overflow-y:auto;width:min(560px,calc(100% - 24px));padding:22px;border:1px solid #47745c;border-radius:16px;background:#101e1a;color:#e9eeed;box-shadow:0 20px 60px #000b}
+.quick-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}.quick-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.quick-head h2{font-size:24px;margin:4px 0 6px;line-height:1.2}.quick-head small{font-size:10px;color:#70d9a2;letter-spacing:1.4px}
+.quick-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;background:#0b1514;border:1px solid #30453c;border-radius:10px;margin:20px 0}
+.quick-tabs button{min-height:46px;color:#c1d3c8;border:0;background:transparent;border-radius:8px;font-weight:600;font-size:13px}.quick-tabs button.selected{background:#2b4639;color:#d2ffe4}
+.quick-dialog label{font-size:13px;margin-top:14px}.quick-dialog textarea{min-height:135px;line-height:1.5}.quick-password-row{display:flex;gap:7px}.quick-password-row input{min-width:0;flex:1}.quick-password-row button{min-width:90px}
+.quick-length,.quick-tip{font-size:11px;color:#aac2b5;line-height:1.6}.quick-length{text-align:right;margin-top:5px}.quick-tip{background:#23352c;border-radius:8px;padding:11px;margin:14px 0}
+.quick-dialog #quick-submit{min-height:48px;font-size:14px}.quick-dialog #quick-result{margin-top:20px}.quick-dialog #quick-output{overflow-wrap:anywhere;word-break:break-word;min-height:110px;background:#0a1511}
+.quick-actions{display:flex;gap:8px;margin-top:10px}.quick-actions>*{flex:1}.quick-error{border:1px solid #a35f5f;background:#562a2b;color:#ffd4d4;padding:10px;border-radius:8px;margin-top:12px}.quick-footer{margin-top:16px;font-size:10px;color:#85988f;text-align:center}
+.mobile-dock,.mobile-more{display:none}
+@media(max-width:900px){.quick-banner{flex-direction:column;align-items:stretch}.quick-banner .quick-entry{width:100%;min-height:46px}}
+@media(max-width:650px){
+ html{scroll-padding-top:76px;scroll-padding-bottom:95px}body{overscroll-behavior-y:contain}
+ .sidebar{position:sticky;top:0;padding:10px 16px;z-index:4;border-bottom:1px solid #2a3b35}.sidebar nav{display:none}.brand{font-size:17px}.brand-mark{width:34px;height:34px;font-size:25px}.brand small{letter-spacing:1px;font-size:7px}
+ .topbar{height:42px;padding:0 14px;border-bottom-color:#1e2928}.top-actions{justify-content:space-between}.topbar .offline-pill{font-size:10px}
+ #main{padding:18px 14px 106px}.page-heading{margin-bottom:18px}.page-heading h1{font-size:clamp(23px,7vw,30px);margin-bottom:8px}.eyebrow{font-size:8px}.subtitle{line-height:1.5;font-size:12px}
+ .composer form,.padded{padding:16px}.panel-heading{padding:14px 16px;min-height:52px}.segmented{margin:18px 0 16px}.segmented button{white-space:normal;line-height:1.35;min-height:46px}
+ .button{min-height:46px;font-size:13px}textarea{min-height:125px}input,select{height:48px}.select-row .button.square{min-width:48px}
+ .editor-layout{gap:14px}.feature-strip{display:none}.page-heading .button{width:100%}.panel{border-radius:12px}
+ .mobile-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;position:fixed;bottom:0;left:0;right:0;z-index:5;background:#0d1715ed;border-top:1px solid #345141;padding:7px 8px max(7px,env(safe-area-inset-bottom));box-shadow:0 -8px 25px #0007}
+ .mobile-dock button{border:0;background:transparent;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#b6c5bc;border-radius:10px;font-size:10px;font-weight:600;padding:4px 0}
+ .mobile-dock button svg{width:22px;height:22px}.mobile-dock button.active,.mobile-dock button[aria-expanded="true"]{background:#264737;color:#c9fddd}
+ .mobile-more:not([hidden]){display:flex;flex-direction:column;position:fixed;z-index:6;bottom:calc(77px + env(safe-area-inset-bottom));right:8px;width:min(310px,calc(100vw - 16px));border:1px solid #41674e;border-radius:13px;background:#192a23;box-shadow:0 8px 45px #000c;padding:9px;gap:4px}
+ .mobile-more button{background:none;border:0;border-radius:8px;color:#e6efe8;text-align:left;font-size:14px;padding:12px;min-height:46px}.mobile-more button:active{background:#36503d}
+ .quick-dialog{inset:0;margin:0;width:100vw;max-width:none;height:100dvh;max-height:100dvh;border:0;border-radius:0;padding:calc(18px + env(safe-area-inset-top)) 17px max(25px,env(safe-area-inset-bottom))}
+ .quick-head h2{font-size:22px}.quick-head #quick-close{font-size:12px;min-height:38px;padding:5px 10px}
+ .quick-dialog textarea,.quick-dialog input{font-size:16px}.quick-dialog .quick-tabs{margin:15px 0}
+ .quick-banner{margin:12px 0;padding:14px;gap:10px}.quick-banner .button{font-size:13px}.contact-card{gap:12px;padding:14px}.contact-actions{justify-content:stretch}.contact-actions>*{flex:1}
+ #toast{bottom:calc(85px + env(safe-area-inset-bottom));font-size:12px}
+ .gate-card{padding:25px 20px}.gate h1{font-size:30px}.gate-brand{margin-bottom:22px}
+ body:has(input:focus) .mobile-dock,body:has(textarea:focus) .mobile-dock,body:has(select:focus) .mobile-dock{display:none}
+}
