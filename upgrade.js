@@ -6,7 +6,7 @@ const html=[
 '<div class="quick-tabs"><button id="quick-encrypt-tab" class="selected" type="button">Зашифровать</button><button id="quick-decrypt-tab" type="button">Расшифровать</button></div>',
 '<form id="quick-form" autocomplete="off"><label for="quick-input" id="quick-input-label">Текст сообщения</label>',
 '<textarea id="quick-input" rows="5" spellcheck="false" required placeholder="Введите сообщение…"></textarea><p id="quick-length" class="quick-length">До 4096 байт · только на устройстве</p>',
-'<label for="quick-password">Пароль для сообщения</label><div class="quick-password-row"><input id="quick-password" type="password" minlength="12" autocomplete="new-password" required placeholder="Не менее 12 символов">',
+'<label for="quick-password">Пароль для сообщения</label><div class="quick-password-row"><input id="quick-password" type="password" autocomplete="new-password" required placeholder="Любой непустой пароль">',
 '<button class="button ghost" id="quick-show" type="button">Показать</button></div>',
 '<p class="quick-tip">Передавай пароль собеседнику отдельно от кода. Не используй пароль от хранилища AUSFIG X. Слабый пароль можно подобрать.</p>',
 '<button class="button primary wide" id="quick-submit" type="submit">Зашифровать текст</button></form>',
