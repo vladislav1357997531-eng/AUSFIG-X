@@ -1,6 +1,6 @@
 // AUSFIG X v0.2. Network-first prevents installed PWAs from being stuck on old files.
 const PREFIX='ausfig-x:'+self.registration.scope+':';
-const CACHE=PREFIX+'v4-2026-10-21-navigation';
+const CACHE=PREFIX+'v5-2026-10-21-navigation-ready';
 const FILES=['./','./index.html','./app.js','./styles.css','./upgrade.css','./upgrade.js','./quick-crypto.js','./navigation-v3.js','./navigation-v3.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
 const PATHS=new Set(FILES.map(f=>new URL(f,self.registration.scope).pathname));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
