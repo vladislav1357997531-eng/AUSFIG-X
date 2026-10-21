@@ -1,7 +1,7 @@
 // AUSFIG X fast offline shell. Never block cached launches on network.
 const PREFIX='ausfig-x:'+self.registration.scope+':';
-const CACHE=PREFIX+'v10-full-offline-shell-20261021';
-const CORE=['./','./index.html','./styles.css','./public-app-v4.css?v=9','./public-app-fast-v5.js?v=10','./quick-crypto.js','./app.js?v=10','./private-contacts-v5.js?v=10','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
+const CACHE=PREFIX+'v11-full-offline-shell-20261021';
+const CORE=['./','./index.html','./styles.css','./public-app-v4.css?v=9','./public-app-fast-v5.js?v=11','./quick-crypto.js','./app.js?v=11','./private-contacts-v5.js?v=11','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
 const SCOPE=new URL(self.registration.scope);
 self.addEventListener('install',event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));

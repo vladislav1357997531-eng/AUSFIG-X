@@ -21,7 +21,7 @@ test('public quick-message state is cleared when switching views or hiding decry
 test('both public and private scripts are precached for offline use', async () => {
   const sw = await read('sw.js');
   const html = await read('index.html');
-  for (const asset of ['./public-app-fast-v5.js?v=10', './app.js?v=10', './private-contacts-v5.js?v=10'])
+  for (const asset of ['./public-app-fast-v5.js?v=11', './app.js?v=11', './private-contacts-v5.js?v=11'])
     assert.ok(sw.includes("'" + asset + "'"), 'Missing offline resource: ' + asset);
-  assert.match(html, /public-app-fast-v5\.js\?v=10/);
+  assert.match(html, /public-app-fast-v5\.js\?v=11/);
 });

@@ -13,10 +13,12 @@ test('quick encryption round trip with Unicode text', async () => {
   assert.equal(await decryptQuick(code, strong), text);
 });
 
-test('new encryption rejects short, repetitive or numeric-only passwords', async () => {
+test('quick encryption allows any nonempty password without a mandatory length', async () => {
   for (const password of ['a', 'a'.repeat(32), '12345678901234567890']) {
-    await assert.rejects(encryptQuick('test', password), /16 символов/);
+    const code = await encryptQuick('test', password);
+    assert.equal(await decryptQuick(code, password), 'test');
   }
+  await assert.rejects(encryptQuick('test', ''), /Введите пароль/);
 });
 
 test('legacy Q1 codes with short passwords remain decryptable', async () => {
