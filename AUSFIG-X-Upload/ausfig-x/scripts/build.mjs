@@ -1,0 +1,18 @@
+import {build} from 'esbuild';
+import {mkdir,cp,readdir,readFile,writeFile,rm} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+await rm('dist',{recursive:true,force:true});
+await mkdir('dist',{recursive:true});
+await cp('public','dist',{recursive:true});
+await build({entryPoints:['src/app.js'],bundle:true,outfile:'dist/app.js',format:'esm',target:['chrome100','safari16','firefox115'],minify:true,legalComments:'eof'});
+const files=(await readdir('dist')).filter(f=>f!=='sw.js').sort();
+const hash=createHash('sha256');for(const f of files)hash.update(await readFile('dist/'+f));const version=hash.digest('hex').slice(0,16);
+const sw=`const PREFIX='ausfig-x:'+self.registration.scope+':';
+const CACHE=PREFIX+'${version}';
+const FILES=${JSON.stringify(['./',...files.map(f=>'./'+f)])};
+const URLS=new Set(FILES.map(p=>new URL(p,self.registration.scope).href));
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)));});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;const u=new URL(event.request.url);if(!URLS.has(u.href))return;event.respondWith(caches.open(CACHE).then(async cache=>(await cache.match(event.request))||fetch(event.request)));});
+`;
+await writeFile('dist/sw.js',sw);await writeFile('dist/.nojekyll','');await rm('docs',{recursive:true,force:true});await cp('dist','docs',{recursive:true});console.log('Built AUSFIG X '+version+' → dist/ and docs/');
