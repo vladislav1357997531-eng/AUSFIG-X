@@ -69,8 +69,8 @@ $('p4-login').onclick=async()=>{
  message('');
  try{
   if(!privateReady){
-   await import('./app.js?v=10');
-   await import('./private-contacts-v5.js?v=10');
+   await import('./app.js?v=11');
+   await import('./private-contacts-v5.js?v=11');
    document.addEventListener('ausfig:unlocked',contactsView);
    document.addEventListener('ausfig:locked',publicView);
    privateReady=true;
