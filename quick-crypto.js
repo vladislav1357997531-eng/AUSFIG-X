@@ -3,7 +3,7 @@ const enc=new TextEncoder(),dec=new TextDecoder('utf-8',{fatal:true});
 const AAD=enc.encode('AUSFIG-X/quick/password-v1'),ITERATIONS=310000;
 function encode(bytes){let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 function decode(str){if(!/^[A-Za-z0-9_-]+$/.test(str)||str.length%4===1)throw Error('Неверный формат кода.');const bin=atob(str.replace(/-/g,'+').replace(/_/g,'/'));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));if(encode(bytes)!==str)throw Error('Неверный формат кода.');return bytes;}
-function checkPassword(pass){if(typeof pass!=='string'||pass.length<12)throw Error('Пароль должен содержать минимум 12 символов.');}
+function checkPassword(pass){if(typeof pass!=='string'||pass.length===0)throw Error('Введите пароль.');}
 async function keyFor(pass,salt){const raw=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt,iterations:ITERATIONS},raw,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
 export async function encryptQuick(text,pass){
  checkPassword(pass);
